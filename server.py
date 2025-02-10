@@ -88,6 +88,7 @@ if __name__ == "__main__":
 
     # Configura o SSL para o servidor
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    context.set_ecdh_curve("secp384r1")
     context.load_cert_chain(certfile=CERT_FILE, keyfile=KEY_FILE)
     
     httpd.socket = context.wrap_socket(httpd.socket, server_side=True)
